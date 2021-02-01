@@ -1,0 +1,16 @@
+# A separate services.yaml with default binding for commonly used services like
+# the Doctrine DataProvider and DataPersister
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            $collectionDataProvider: '@api_platform.doctrine.orm.default.collection_data_provider'
+            $itemDataProvider: '@api_platform.doctrine.orm.default.item_data_provider'
+            $dataPersister: '@api_platform.doctrine.orm.data_persister'
+
+    App\ApiPlatform\:
+        resource: '../src/ApiPlatform/'
+        exclude:
+            - '../src/ApiPlatform/Entity/'
